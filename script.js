@@ -16,7 +16,22 @@ let countListItems = function (){
          count ++;
         }
     }
-    // alert(`there are ${count} element nodes in "olElement"`);
+    alert(`there are ${count} element nodes in "olElement"`);
 }
 
 window.onload = countListItems;
+
+let printParValue = function (){
+    text="";
+    pElement = document.getElementById('toDoNotes');
+    console.log(pElement);
+    console.log(pElement.childNodes);
+    for (i=0; i<pElement.childNodes.length; i++){
+        if (pElement.childNodes[i].nodeType===3){
+            text += pElement.childNodes[i].nodeValue;
+        }
+    }
+    alert ("The paragraph says:\n\n"+text);
+}
+
+// window.onload = printParValue;
