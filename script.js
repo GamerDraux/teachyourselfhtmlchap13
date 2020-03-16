@@ -1,10 +1,8 @@
-document.addEventListener('load', console.log ('document loaded'));
 
 let init = function (){
     console.log ('DOM elements initialized')
 };
 
-window.onload=init;
 
 let countListItems = function (){
     olElement=document.getElementById('toDoList');
@@ -12,14 +10,13 @@ let countListItems = function (){
     console.log (olElement.childNodes);
     count=0;
     for (i=0; i<olElement.childNodes.length; i++){
-      if(olElement.childNodes[i].nodeType===1){
-         count ++;
+        if(olElement.childNodes[i].nodeType===1){
+            count ++;
         }
     }
     alert(`there are ${count} element nodes in "olElement"`);
 }
 
-window.onload = countListItems;
 
 let printParValue = function (){
     text="";
@@ -34,4 +31,28 @@ let printParValue = function (){
     alert ("The paragraph says:\n\n"+text);
 }
 
-// window.onload = printParValue;
+
+let alertAllDivText = function (){
+    text="";
+    divElementArr= document.getElementsByTagName("div");
+    console.log (divElementArr);
+    console.log (divElementArr[0]);
+    for (i=0; i<divElementArr.length; i++){
+        text += divElementArr[i].innerHTML;
+        text += "\n";
+    }
+    alert("The Div texts go like this:\n\n"+text);
+}
+
+var newDiv = document.createElement('div');
+var newTextNode = document.createTextNode('Here is some new text content');
+let toDoNotes = document.getElementById('toDoNotes');
+toDoNotes.appendChild(newDiv);
+console.log (newDiv);
+newDiv.innerHTML="very important new text";
+
+window.addEventListener('load', init);
+document.addEventListener('load', console.log ('document loaded'));
+window.addEventListener('load', alertAllDivText);
+window.addEventListener('load', printParValue);
+window.addEventListener('load',countListItems);
